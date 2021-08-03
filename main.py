@@ -42,9 +42,10 @@ async def retrieve_from_db(sheet_id: str):
     result = sheets_db.get(sheet_id)
 
     if result is not None:
-        # add ID 
-        setattr(result, 'id', sheet_id)
-        return JSONResponse(result, 200)
+        # add ID, using python's (**) operator
+        # https://how.wtf/spread-operator-in-python.html
+        with_id = {**result, 'id': sheet_id}
+        return JSONResponse(with_id, 200)
     else:
         return JSONResponse('Sheet id {} doesn\'t exist!'.format(sheet_id), 404)
 
