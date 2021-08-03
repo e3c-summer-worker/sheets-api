@@ -1,6 +1,6 @@
 # Sheets API
 
-Google Sheets stuff with Deta, written in FastAPI.
+Google Sheets API middleware with Deta, written in FastAPI.
 
 ## Get Started:
 
