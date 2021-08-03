@@ -1,4 +1,4 @@
-from typings.Payload import Payload
+from data.Payload import Payload
 from fastapi import FastAPI, Request
 from fastapi.responses import PlainTextResponse, JSONResponse
 from deta import Deta

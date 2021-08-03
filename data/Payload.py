@@ -1,4 +1,4 @@
-from typings.Size import Size
+from data.Size import Size
 from typing import List
 from pydantic import BaseModel
 
