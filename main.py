@@ -2,6 +2,7 @@ from data.Response import Response
 from data.Payload import Payload
 from fastapi import FastAPI, Request
 from fastapi.responses import PlainTextResponse, JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from deta import Deta
 from dotenv import load_dotenv
 import time
@@ -59,3 +60,11 @@ async def add_process_time_header(request: Request, call_next):
     response.headers["X-Process-Time"] = str(process_time)
     return response
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
