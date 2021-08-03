@@ -20,8 +20,8 @@ def render():
     return "Hello World!"
 
 
-@app.post("/post")
-async def echo_response(payload: Payload, response_class=PlainTextResponse):
+@app.post("/upload")
+async def upload_to_db(payload: Payload, response_class=PlainTextResponse):
     # basically replace all data with the payload data
     # We put it under the is of the google sheets id
     sheets_db.put({
@@ -31,6 +31,16 @@ async def echo_response(payload: Payload, response_class=PlainTextResponse):
     }, payload.id)
 
     return PlainTextResponse(content='Success!')
+
+@app.get("/sheet/{sheet_id}")
+async def retrieve_from_db(sheet_id: str, response_class=JSONResponse):
+    # retrieve all the data
+    result = sheets_db.get(sheet_id)
+
+    if result is not None:
+        return JSONResponse(result, 200)
+    else:
+        return JSONResponse('Sheet id {} doesn\'t exist!'.format(sheet_id), 404)
 
 
 @app.middleware("http")
