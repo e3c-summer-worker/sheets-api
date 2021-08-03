@@ -42,8 +42,8 @@ async def retrieve_from_db(sheet_id: str):
     result = sheets_db.get(sheet_id)
 
     if result is not None:
-        # valid data
-        result.id = sheet_id
+        # add ID 
+        setattr(result, 'id', sheet_id)
         return JSONResponse(result, 200)
     else:
         return JSONResponse('Sheet id {} doesn\'t exist!'.format(sheet_id), 404)
