@@ -1,5 +1,7 @@
 # Sheets API
 
+**NOTE: The code has now been moved to the [Google Sheets](https://github.com/e3c-summer-worker/google-sheets) monorepo**
+
 Google Sheets API middleware with Deta, written in FastAPI.
 
 ## Get Started:
