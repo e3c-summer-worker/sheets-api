@@ -71,7 +71,7 @@ def format_rows(result: Dict, sheet_id: str):
 
 
 def format_objs(row: List[str], headers: List[str]):
-    zipped = zip(row, headers)
+    zipped = zip(headers, row)
     return {header: cell for header, cell in zipped}
 
 
